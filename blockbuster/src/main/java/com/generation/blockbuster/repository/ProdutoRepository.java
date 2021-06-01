@@ -16,4 +16,7 @@ public interface ProdutoRepository extends JpaRepository <Produto, Long>{
 	public List<Produto> findByValor(BigDecimal valor);
 	
 	public List<Produto> findByValorLessThanEqual(BigDecimal valor);
+
+	public List<Produto> findAllByDescricaoContainingIgnoreCase(String descricao);
+	
 }

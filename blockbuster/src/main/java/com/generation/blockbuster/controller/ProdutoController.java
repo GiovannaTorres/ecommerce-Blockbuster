@@ -49,10 +49,16 @@ public class ProdutoController {
 			return ResponseEntity.ok(repositorio.findByValor(valor));
 		}
 		
-		//@GetMapping("/valor/<{valor}")
-		//public ResponseEntity<List<Produto>> getAllByValorLessEqual (@PathVariable BigDecimal valor) {
-		//	return ResponseEntity.ok(repositorio.findByValorLessThanEqual(valor));
-		//}
+		@GetMapping("/valor/<{valor}")
+		public ResponseEntity<List<Produto>> getAllByValorLessEqual (@PathVariable BigDecimal valor) {
+			return ResponseEntity.ok(repositorio.findByValorLessThanEqual(valor));
+		}
+		
+		@GetMapping("/descricao/{descricao}")
+		public ResponseEntity <List<Produto>> getByDescricao(@PathVariable String descricao){
+			return ResponseEntity.ok(repositorio.findAllByDescricaoContainingIgnoreCase(descricao));
+		}
+
 		
 		@PostMapping
 		public ResponseEntity <Produto> posting (@RequestBody Produto produto) {
